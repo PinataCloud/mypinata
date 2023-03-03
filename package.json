@@ -1,0 +1,39 @@
+{
+  "name": "mypinatadupe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-amplify/auth": "^5.1.9",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@heroicons/react": "^1.0.6",
+    "@mui/material": "^5.11.10",
+    "@next/font": "13.1.6",
+    "@rainbow-me/rainbowkit": "^0.11.1",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@supabase/supabase-js": "^2.8.0",
+    "@types/node": "18.14.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "aws-amplify": "^5.0.15",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "gravatar": "^1.8.2",
+    "ky": "^0.33.2",
+    "next": "13.1.6",
+    "next-redux-wrapper": "^8.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@types/gravatar": "^1.8.3"
+  }
+}
