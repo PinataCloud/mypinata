@@ -18,12 +18,12 @@ export const fetchSession = async () => {
     };
   } catch (error) {
     console.log(error);
-    if (
-      window.location.pathname !== "/" &&
-      !window.location.pathname.includes("auth")
-    ) {
-      window.location.replace("/");
-    }
+    // if (
+    //   window.location.pathname !== "/" &&
+    //   !window.location.pathname.includes("auth")
+    // ) {
+    //   window.location.replace("/");
+    // }
     return null;
   }
 };
@@ -46,46 +46,12 @@ export const clearCognitoCache = () => {
     console.log("removed");
   }
 };
-// const getHeaders = async () => {
-//   const sessionData = await fetchSession();
-//   const { accessToken } = sessionData;
-//   return {
-//     Authorization: `Bearer ${accessToken}`,
-//     Source: "login",
-//   };
-// };
-
-// export const checkForUser = async () => {
-//   try {
-//     const url = "/api/user";
-//     const headers = await getHeaders();
-//     const res = await ky(url, {
-//       method: "GET",
-//       headers: {
-//         ...headers,
-//       },
-//     });
-//     const json = await res.json();
-//     console.log("checkuserlong", json);
-//     if (json) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   } catch (error) {
-//     return false;
-//   }
-// };
 
 export const logUserIn = async (email, password) => {
   try {
     localStorage.removeItem("pinata-avatar");
     const res = await Auth.signIn(email, password);
     const user = await Auth.userSession(res);
-    // const userExists = await checkForUser();
-    // if (userExists) {
-    //   console.log(userExists, "user exisits");
-    // }
     return {
       success: true,
       user: res,

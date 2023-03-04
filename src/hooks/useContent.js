@@ -1,5 +1,5 @@
 import ky from "ky";
-import { fetchSession } from "./useAuth";
+import { fetchSession, isAuthenticated } from "./useAuth";
 import axios from "axios";
 
 export const useContent = () => {
@@ -93,6 +93,27 @@ export const useContent = () => {
     }
   };
 
+  const isDomainOwner = async (domain) => {
+    const session = await fetchSession();
+    if (session) {
+      try {
+        const url = "/api/isOwner";
+        const headers = await getHeaders();
+        const res = await ky(url, {
+          body: domain,
+          method: "POST",
+          headers: {
+            ...headers,
+          },
+        });
+        const json = await res.json();
+        return json;
+      } catch (error) {
+        throw error;
+      }
+    }
+  };
+
   const getPublicContent = async () => {
     try {
       const url = "/api/content/public";
@@ -125,5 +146,6 @@ export const useContent = () => {
     getPublicContent,
     getUserDomain,
     addUserDomain,
+    isDomainOwner,
   };
 };
