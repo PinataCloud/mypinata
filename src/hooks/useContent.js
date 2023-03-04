@@ -58,6 +58,22 @@ export const useContent = () => {
     }
   };
 
+  const getPublicContent = async () => {
+    try {
+      const url = "/api/content/public";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
   const getHeaders = async () => {
     const sessionData = await fetchSession();
     const { accessToken } = sessionData;
@@ -71,5 +87,6 @@ export const useContent = () => {
     submarineKey,
     getUserPinataSession,
     getSubmarinedShortIds,
+    getPublicContent,
   };
 };

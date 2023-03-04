@@ -1,4 +1,4 @@
-import { useContent } from "../../hooks/useContent";
+import { useContent } from "../../../hooks/useContent";
 import { useState } from "react";
 import { Unstable_Grid2, Box, Checkbox } from "@mui/material";
 import { useEffect } from "react";

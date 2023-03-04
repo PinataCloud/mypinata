@@ -16,3 +16,20 @@ export const getPinataUserSession = async (req) => {
     throw error;
   }
 };
+
+export const getPublicFiles = async (jwt) => {
+  try {
+    const config = {
+      method: "get",
+      url: "https://testapi.pinata.cloud/data/pinList?status=pinned",
+      headers: {
+        Authorization: jwt,
+        source: "login",
+      },
+    };
+    const res = await axios(config);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};

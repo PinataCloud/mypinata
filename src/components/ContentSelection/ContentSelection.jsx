@@ -6,7 +6,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Typography, Unstable_Grid2 } from "@mui/material";
 import Link from "next/link";
-import SubmarineContent from "./SubmarineContent";
+import SubmarineContent from "./Submarine/SubmarineContent";
+import NFTGallery from "./NFT/NFTGallery";
+import PubilcContent from "./Public/PublicContent";
 
 const ContentSelection = () => {
   const [mediaType, setMediaType] = useState("sub");
@@ -42,6 +44,8 @@ const ContentSelection = () => {
       </Unstable_Grid2>
       <Unstable_Grid2>
         {mediaType === "sub" && <SubmarineContent />}
+        {mediaType === "nfts" && <NFTGallery />}
+        {mediaType === "public" && <PubilcContent />}
       </Unstable_Grid2>
     </Unstable_Grid2>
   );

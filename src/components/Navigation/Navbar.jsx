@@ -1,6 +1,5 @@
 import { Button, Typography, Unstable_Grid2 } from "@mui/material";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import styles from "../../styles/Navbar.module.css";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
 
@@ -12,7 +11,10 @@ export default function Navbar() {
     router.push("/auth");
   };
   return (
-    <nav className={styles.navbar}>
+    <Unstable_Grid2
+      container
+      sx={{ justifyContent: "space-between", padding: "2rem 4rem 0.8rem 4rem" }}
+    >
       <Typography variant="h4">MyPinata</Typography>
       {isAuthenticated ? (
         <Unstable_Grid2 container gap={"1em"}>
@@ -22,6 +24,6 @@ export default function Navbar() {
       ) : (
         <Button onClick={handleLogin}>Login</Button>
       )}
-    </nav>
+    </Unstable_Grid2>
   );
 }
