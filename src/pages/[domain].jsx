@@ -11,10 +11,9 @@ const Domain = () => {
 
   const router = useRouter();
   const { isAuthenticated } = useAuth();
+  const { domain } = router.query;
 
   const isOwner = async () => {
-    const { domain } = router.query;
-
     const data = await isDomainOwner(domain);
     if (data.isOwner) {
       setDomainOwner(true);
@@ -32,7 +31,7 @@ const Domain = () => {
     <MainLayout>
       <Unstable_Grid2>
         {isAuthenticated && domainOwner && (
-          <Link passHref href="/selectcontent">
+          <Link passHref href={`/selectcontent?domain=${domain}`}>
             Add Files
           </Link>
         )}

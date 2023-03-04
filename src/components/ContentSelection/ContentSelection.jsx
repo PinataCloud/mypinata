@@ -9,9 +9,12 @@ import Link from "next/link";
 import SubmarineContent from "./Submarine/SubmarineContent";
 import NFTGallery from "./NFT/NFTGallery";
 import PubilcContent from "./Public/PublicContent";
+import { useRouter } from "next/router";
 
 const ContentSelection = () => {
   const [mediaType, setMediaType] = useState("sub");
+  const router = useRouter();
+  const domain = router.query.domain;
 
   const handleChange = (e) => {
     setMediaType(e.target.value);
@@ -37,7 +40,7 @@ const ContentSelection = () => {
           </FormControl>
         </Box>
         <Unstable_Grid2>
-          <Link passHref href="/homepage">
+          <Link passHref href={`/${domain}`}>
             <Typography variant="h6">Add Files</Typography>
           </Link>
         </Unstable_Grid2>
