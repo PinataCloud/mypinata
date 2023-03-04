@@ -10,5 +10,7 @@ export const getSubmarinedContent = async (pinataId) => {
   if (error) {
     throw "Couldn't find content";
   }
-  return data;
+  const arr = data.map((obj) => obj["short_id"]);
+
+  return arr;
 };
