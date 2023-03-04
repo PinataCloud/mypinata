@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import LockedContent from "../components/ContentDisplay/LockedContent";
 
 const Domain = () => {
-  const { isDomainOwner, getSubmarineSelection } = useContent();
+  const { isDomainOwner } = useContent();
   const [domainOwner, setDomainOwner] = useState(false);
   const [domain, setDomain] = useState();
   const router = useRouter();
