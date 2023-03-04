@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import styles from "../../../styles/NftGallery.module.css";
 
-export default function NFTGallery({}) {
+export default function NFTGallery(domain) {
   const [nfts, setNfts] = useState();
 
   const [fetchMethod, setFetchMethod] = useState("connectedWallet");

@@ -12,7 +12,7 @@ import {
 import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";
 
-const PubilcContent = () => {
+const PubilcContent = (domain) => {
   const [files, setFiles] = useState([]);
   const { getPublicContent } = useContent();
   const getContent = async () => {
