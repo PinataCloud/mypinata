@@ -58,6 +58,41 @@ export const useContent = () => {
     }
   };
 
+  const getUserDomain = async () => {
+    try {
+      const url = "/api/domain";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const addUserDomain = async (domain) => {
+    try {
+      const url = "/api/domain";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        body: domain,
+        method: "POST",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const getPublicContent = async () => {
     try {
       const url = "/api/content/public";
@@ -88,5 +123,7 @@ export const useContent = () => {
     getUserPinataSession,
     getSubmarinedShortIds,
     getPublicContent,
+    getUserDomain,
+    addUserDomain,
   };
 };

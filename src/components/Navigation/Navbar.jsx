@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <Unstable_Grid2
       container
-      sx={{ justifyContent: "space-between", padding: "2rem 4rem 0.8rem 4rem" }}
+      sx={{ justifyContent: "space-between", padding: "1rem 0" }}
     >
       <Typography variant="h4">MyPinata</Typography>
       {isAuthenticated ? (

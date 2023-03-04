@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
+import { useContent } from "../../hooks/useContent";
 
-export default function AuthForm() {
+const AuthForm = () => {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { getUserDomain } = useContent();
 
   const { logUserIn } = useAuth();
+
+  const checkHasDomain = async () => {
+    let data = await getUserDomain();
+    return data;
+  };
 
   const handleValidSubmit = async (event) => {
     event.preventDefault();
@@ -21,8 +28,14 @@ export default function AuthForm() {
     if (!result.success) {
       setAuthError(result.error.message);
     } else {
-      console.log(result);
-      router.push("/homepage");
+      const data = await checkHasDomain();
+      console.log(data);
+
+      if (data.hasDomain) {
+        router.push(`/${data.userDomain.domain}`);
+      } else {
+        router.push("/domain");
+      }
     }
   };
 
@@ -32,15 +45,6 @@ export default function AuthForm() {
         <div>
           <div>
             <h2>Sign in with your Pinata account</h2>
-            <p>
-              Or{" "}
-              <a
-                href="https://app.pinata.cloud"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                sign up here.
-              </a>
-            </p>
           </div>
           <form onSubmit={handleValidSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
@@ -86,4 +90,6 @@ export default function AuthForm() {
       </div>
     </>
   );
-}
+};
+
+export default AuthForm;
