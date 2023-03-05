@@ -74,33 +74,29 @@ const PublicContent = () => {
       >
         MyPage
       </button>
-      <Unstable_Grid2
-        container
-        gap={"1rem"}
-        sx={{ marginTop: "1rem", padding: "1rem" }}
-      >
+      <div className="grid grid-cols-2 mt-6 gap-4 w-full">
         {files?.length > 0 &&
           files.map((file) => {
             return (
-              <Unstable_Grid2>
-                <div className="content-card">
-                  <CardActionArea>
-                    <CardActions>
+              <div>
+                <div className="content-card content-card-public flex">
+                  <div>
+                    <button>
                       <Checkbox 
                         value={file}
                         onChange={(e) => handleCheckboxChange(e, file)}
-                        className="checkbox"
+                        className="checkbox checkbox-public"
                       />
-                    </CardActions>
-                  </CardActionArea>
+                    </button>
+                  </div>
                   <CardContent>
-                    <Typography>{file}</Typography>
+                    <a href={`https://gateway.pinata.cloud/ipfs/${file}`} target="_blank">{file}</a>
                   </CardContent>
                 </div>
-              </Unstable_Grid2>
+              </div>
             );
           })}
-      </Unstable_Grid2>
+      </div>
     </Unstable_Grid2>
   );
 };

@@ -25,35 +25,32 @@ const LockedContent = () => {
     setSubmarineContent(data.userContent);
   };
   return (
-    <Unstable_Grid2 container>
+    <div className="grid grid-cols-3 mt-6 gap-4 w-full">
       {submarineContent?.length > 0 &&
         submarineContent.map((id) => {
           return (
             <Unstable_Grid2 key={id}>
-              <Card>
-                <CardActionArea>
-                  <CardActions>
-                    <a
-                      className=""
+              <div className="content-card submarine-content-card">
+                  <a
+                      className="btn border py-2 px-6 m-4 rounded-lg text-center"
                       href={`https://submarine-me.vercel.app/${id}`}
                       target="_blank"
                     >
-                      Unlock
-                    </a>
-                  </CardActions>
-                </CardActionArea>
+                    Unlock
+                  </a>
                 <CardContent>
                   <iframe
                     src={`https://submarine-me.vercel.app/${id}`}
-                    width="400px"
-                    height="600px"
+                    width={400}
+                    height={550}
+
                   />
                 </CardContent>
-              </Card>
+              </div>
             </Unstable_Grid2>
           );
         })}
-    </Unstable_Grid2>
+    </div>
   );
 };
 

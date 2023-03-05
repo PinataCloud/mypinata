@@ -21,24 +21,25 @@ const UnlockedContent = () => {
     setPublicContent(data.userContent);
   };
   return (
-    <Unstable_Grid2 container>
+    <div className="grid grid-cols-3 mt-6 gap-4 w-full">
       {publicContent?.length > 0 &&
         publicContent.map((id) => {
           return (
             <Unstable_Grid2 key={id}>
-              <Card>
+              <div className="content-card user-dashboard-card">
                 <CardContent>
                   <Image
                     src={`https://gateway.pinata.cloud/ipfs/${id}`}
                     width={500}
                     height={500}
+                    className="rounded"
                   ></Image>
                 </CardContent>
-              </Card>
+              </div>
             </Unstable_Grid2>
           );
         })}
-    </Unstable_Grid2>
+    </div>
   );
 };
 
