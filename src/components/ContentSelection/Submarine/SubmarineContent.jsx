@@ -3,11 +3,9 @@ import { useState } from "react";
 import {
   Unstable_Grid2,
   Checkbox,
-  Card,
   CardContent,
   CardActionArea,
-  CardActions,
-  Button,
+  CardActions
 } from "@mui/material";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -77,23 +75,23 @@ const SubmarineContent = () => {
           submarinedIDs.map((id) => {
             return (
               <Unstable_Grid2 key={id}>
-                <Card>
+                <div className="content-card min-h-min submarine-content-card">
                   <CardActionArea>
                     <CardActions>
                       <Checkbox
                         value={id}
                         onChange={(e) => handleCheckboxChange(e, id)}
+                        className="checkbox"
                       />
                     </CardActions>
                   </CardActionArea>
                   <CardContent>
                     <iframe
                       src={`https://submarine-me.vercel.app/${id}`}
-                      width="100%"
-                      height="100%"
+                      className="content-iframe"
                     />
                   </CardContent>
-                </Card>
+                </div>
               </Unstable_Grid2>
             );
           })}

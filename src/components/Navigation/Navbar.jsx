@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex justify-between pb-4 px-8 pt-4">
+    <div className="flex justify-between h-16 pb-6 mb-6 px-8 pt-4">
       <div className="flex">
         <img className="h-9 mr-2" src="/cloud.png"/>
         <h4 className="ff">MyPinataCloud</h4>
@@ -30,14 +30,14 @@ export default function Navbar() {
         <div className="flex">
           {isAuthenticated ? (
             <button
-              className="h-12 rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              className="h-10 mr-4 rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
               onClick={logUserOut}
             >
               Logout
             </button>
           ) : (
             <button
-              className="h-12 rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              className=" rounded-3xl mr-4 text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
               onClick={handleLogin}
             >
               Log In

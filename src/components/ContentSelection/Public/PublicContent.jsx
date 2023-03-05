@@ -1,14 +1,11 @@
 import { useState } from "react";
 import {
   Unstable_Grid2,
-  Box,
   Checkbox,
-  Card,
   CardContent,
   Typography,
   CardActionArea,
   CardActions,
-  Button,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";

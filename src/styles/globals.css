@@ -120,14 +120,13 @@ input {
 /* Content Selection Styles */
 .content-select {
   border-bottom: solid 1px #ffffff61;
-  text-underline-offset: 0.5em;
-
 }
 
 .content-select button {
     font-size: 1.75em;
     font-family: "SFPro-Bold", system-ui, sans-serif;
     opacity: 0.85;
+    height: 55px;
 }
 
 .content-select button:hover {
@@ -149,4 +148,14 @@ input {
 
 .checkbox:hover {
   background-color: #fff;
+}
+
+.submarine-content-card {
+  height: 700px;
+}
+
+.content-iframe {
+  height: 550px;
+  width: auto;
+  border-radius: 20px;
 }
