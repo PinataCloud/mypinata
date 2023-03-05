@@ -1,14 +1,11 @@
 import { useState } from "react";
 import {
   Unstable_Grid2,
-  Box,
   Checkbox,
-  Card,
   CardContent,
   Typography,
   CardActionArea,
   CardActions,
-  Button,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";
@@ -86,19 +83,20 @@ const PublicContent = () => {
           files.map((file) => {
             return (
               <Unstable_Grid2>
-                <Card>
+                <div className="content-card">
                   <CardActionArea>
                     <CardActions>
-                      <Checkbox
+                      <Checkbox 
                         value={file}
                         onChange={(e) => handleCheckboxChange(e, file)}
+                        className="checkbox"
                       />
                     </CardActions>
                   </CardActionArea>
                   <CardContent>
                     <Typography>{file}</Typography>
                   </CardContent>
-                </Card>
+                </div>
               </Unstable_Grid2>
             );
           })}
