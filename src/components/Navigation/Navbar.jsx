@@ -11,10 +11,10 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex justify-between pb-7 px-8 pt-4">
+    <div className="flex justify-between pb-4 px-8 pt-4">
       <div className="flex">
         <img className="h-9 mr-2" src="/cloud.png"/>
-        {!isAuthenticated && <h4 className="ff">MyPinataCloud</h4>}
+        <h4 className="ff">MyPinataCloud</h4>
       </div>
 
       <div className="flex">

@@ -13,13 +13,13 @@ const ContentSelection = () => {
   };
 
   return (
-    <div className="p-3 w-full">
+    <div className="content-select h-[45px] mb-2 w-full">
       {/* Tabs */}
-      <div className="flex px-6 content-select">
-        <a className="mr-6">All</a>
-        <a className="mr-6" href="">Public</a>
-        <a className="mr-6" href="">Private</a>
-        <a className="mr-6"href="">NFTs</a>
+      <div className="flex px-11 mb-4 w-full">
+        <a className="mr-8">All</a>
+        <a className="mr-8" href="">Public</a>
+        <a className="mr-8" href="">Private</a>
+        <a className="mr-8"href="">NFTs</a>
         <a href="">Merch</a>
       </div>
     </div>
