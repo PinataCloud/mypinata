@@ -8,6 +8,7 @@ import LockedContent from "../components/ContentDisplay/LockedContent";
 import UnlockedContent from "../components/ContentDisplay/UnlockedContent";
 
 const Domain = () => {
+  const [mediaType, setMediaType] = useState("all");
   const { isDomainOwner } = useContent();
   const [domainOwner, setDomainOwner] = useState(false);
   const [domain, setDomain] = useState();
@@ -41,8 +42,41 @@ const Domain = () => {
             <img className="add-item-btn hvr-grow" src="./cloud-btn.png" />
           </Link>
         )}
-        <LockedContent />
-        <UnlockedContent />
+        <div className="p-3 w-full">
+          <div className="flex px-6 content-select mb-3">
+            <button
+              onClick={() => setMediaType("all")}
+              className="mr-6 text-2xl"
+            >
+              All
+            </button>
+            <button
+              onClick={() => setMediaType("locked")}
+              className="mr-6 text-2xl"
+              href=""
+            >
+              Locked
+            </button>
+            <button
+              onClick={() => setMediaType("unlocked")}
+              className="mr-6 text-2xl"
+              href=""
+            >
+              Unlocked
+            </button>
+          </div>
+          <div className="p-3">
+            {mediaType === "all" && (
+              <>
+                <UnlockedContent />
+                <LockedContent />
+              </>
+            )}
+
+            {mediaType === "locked" && <LockedContent />}
+            {mediaType === "unlocked" && <UnlockedContent />}
+          </div>
+        </div>
       </div>
     </MainLayout>
   );

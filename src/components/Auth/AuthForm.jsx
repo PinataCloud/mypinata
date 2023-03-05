@@ -24,7 +24,6 @@ const AuthForm = () => {
     setSubmitting(true);
     setAuthError(null);
     const result = await logUserIn(email, password);
-    setSubmitting(false);
     if (!result.success) {
       setAuthError(result.error.message);
     } else {
@@ -35,6 +34,7 @@ const AuthForm = () => {
         router.push("/domain");
       }
     }
+    setSubmitting(false);
   };
 
   return (
@@ -48,9 +48,7 @@ const AuthForm = () => {
             <input type="hidden" name="remember" defaultValue="true" />
             <div>
               <div>
-                <label htmlFor="email-address">
-                  Email address
-                </label>
+                <label htmlFor="email-address">Email address</label>
                 <input
                   id="email-address"
                   name="email"
@@ -81,8 +79,8 @@ const AuthForm = () => {
 
             <div>
               <button
-              className="rounded-3xl text-center border py-2 border-solid border-white btn btn-dark hvr-grow cursor-pointer"
-              type="submit"
+                className="rounded-3xl text-center border py-2 border-solid border-white btn btn-dark hvr-grow cursor-pointer"
+                type="submit"
               >
                 <span></span>
                 {submitting ? "Signing in..." : "Sign in"}
