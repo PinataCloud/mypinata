@@ -5,13 +5,13 @@
 
 body {
   font-family: "SF Pro Display", system-ui, sans-serif;
-  background-color: black;
+  /* background-color: black; */
+  background-color: #ccc;
   color: white;
 }
 
 h2 {
   font-size: 1.3em;
-  font-weight: 
 }
 
 h4 {
@@ -52,6 +52,11 @@ input {
   width: 115px;
 }
 
+.btn-light {
+  color: #000;
+  background-color: #fff;
+}
+
 .btn-dark {
   color: #fff;
 }
@@ -62,6 +67,17 @@ input {
   background-color: #fff;
   transition: 0.4s;
   transition-property: transform;
+}
+
+.add-item-btn {
+  width: 75px;
+  height: auto;
+}
+
+.add-item-link {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
 }
 
 /* Hover effects */

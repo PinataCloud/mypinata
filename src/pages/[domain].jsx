@@ -1,6 +1,5 @@
 import {
   Typography,
-  Unstable_Grid2,
   Button,
   Link,
   Card,
@@ -37,14 +36,14 @@ const Domain = () => {
 
   return (
     <MainLayout>
-      <Unstable_Grid2>
+      <div className="relative h-[75vh]">
         {isAuthenticated && domainOwner && (
-          <Link passHref href={`/selectcontent?domain=${domain}`}>
-            Add Files
+          <Link className="add-item-link" passHref href={`/selectcontent?domain=${domain}`}>
+            <img className="add-item-btn hvr-grow" src="./cloud-btn.png"/>
           </Link>
         )}
         <LockedContent />
-      </Unstable_Grid2>
+      </div>
     </MainLayout>
   );
 };

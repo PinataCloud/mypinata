@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '75': '75vh',
+      }
+    },
   },
   plugins: [
     require('tailwindcss-font-inter')
