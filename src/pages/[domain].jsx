@@ -1,10 +1,4 @@
-import {
-  Typography,
-  Button,
-  Link,
-  Card,
-  CardContent,
-} from "@mui/material";
+import { Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import MainLayout from "../components/Layout/MainLayout";
 import { useContent } from "../hooks/useContent";
@@ -22,7 +16,7 @@ const Domain = () => {
 
   const isOwner = async () => {
     const data = await isDomainOwner(domain);
-    if (data) {
+    if (data?.isOwner) {
       setDomainOwner(true);
     }
     return data;
@@ -39,12 +33,15 @@ const Domain = () => {
     <MainLayout>
       <div className="relative h-[75vh]">
         {isAuthenticated && domainOwner && (
-          <Link className="add-item-link" passHref href={`/selectcontent?domain=${domain}`}>
-            <img className="add-item-btn hvr-grow" src="./cloud-btn.png"/>
+          <Link
+            className="add-item-link"
+            passHref
+            href={`/selectcontent?domain=${domain}`}
+          >
+            <img className="add-item-btn hvr-grow" src="./cloud-btn.png" />
           </Link>
         )}
         <LockedContent />
-
         <UnlockedContent />
       </div>
     </MainLayout>

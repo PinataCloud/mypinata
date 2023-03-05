@@ -18,23 +18,34 @@ export default function Navbar() {
       </div>
 
       <div className="flex">
-        {isAuthenticated && <ConnectButton accountStatus="address"
-                  chainStatus="icon"
-                  showBalance={false} ></ConnectButton>}
-        {isAuthenticated ? <button
-              className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
-              onClick={logUserOut}>
-              Logout
-            </button> :
-            <button className="rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer" onClick={handleLogin}>Log In</button>} 
-        {!isAuthenticated && <button
-            className="rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer"
+        {isAuthenticated && (
+          <ConnectButton
+            accountStatus="address"
+            chainStatus="icon"
+            showBalance={false}
+          ></ConnectButton>
+        )}
+        {isAuthenticated ? (
+          <button
+            className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+            onClick={logUserOut}
           >
-            Sign Up
+            Logout
           </button>
-        }
+        ) : (
+          <button
+            className="rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+            onClick={handleLogin}
+          >
+            Log In
+          </button>
+        )}
+        {!isAuthenticated && (
+          <button className="rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer">
+            <a href="https://www.pinata.cloud/">Sign Up</a>
+          </button>
+        )}
       </div>
-
     </div>
   );
 }

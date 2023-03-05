@@ -64,8 +64,17 @@ const PublicContent = () => {
 
   return (
     <Unstable_Grid2>
-      <Button onClick={handleAdd}>Add Files</Button>
-      <Unstable_Grid2 container rowGap={"1rem"}>
+      <button
+        className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+        onClick={handleAdd}
+      >
+        Add Files
+      </button>
+      <Unstable_Grid2
+        container
+        gap={"1rem"}
+        sx={{ marginTop: "1rem", padding: "1rem" }}
+      >
         {files?.length > 0 &&
           files.map((file) => {
             return (

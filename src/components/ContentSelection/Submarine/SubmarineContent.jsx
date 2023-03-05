@@ -59,9 +59,18 @@ const SubmarineContent = () => {
   };
 
   return (
-    <Unstable_Grid2 sx={{ textAlign: "right" }}>
-      <Button onClick={handleAdd}>Add Files</Button>
-      <Unstable_Grid2 container gap={"2rem"}>
+    <Unstable_Grid2>
+      <button
+        className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+        onClick={handleAdd}
+      >
+        Add Files
+      </button>
+      <Unstable_Grid2
+        container
+        gap={"2rem"}
+        sx={{ marginTop: "1rem", padding: "1rem" }}
+      >
         {submarinedIDs?.length > 0 &&
           submarinedIDs.map((id) => {
             return (
