@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useContent } from "../../hooks/useContent";
+import './globals.css';
 
 export default function DomainForm() {
   const router = useRouter();

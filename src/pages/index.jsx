@@ -1,10 +1,12 @@
-import { Typography, Unstable_Grid2 } from "@mui/material";
 import MainLayout from "../components/Layout/MainLayout";
 
 export default function Home() {
   return (
     <MainLayout>
-      <Typography variant="h4">Welcome to MyPinata</Typography>
+      <div className="relative flex items-center">
+        <img className="h-300 min-h-full min-w-full hero-img" src="/hero-img.png"/>
+        <h2 className="ff hero-text">Your digital personality. your way.</h2>
+      </div>
     </MainLayout>
   );
 }

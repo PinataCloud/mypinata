@@ -1,6 +1,6 @@
 // import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { getDefaultWallets, RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import {
   mainnet,
@@ -18,6 +18,7 @@ import { Amplify, Auth } from "aws-amplify";
 import { awsconfig } from "../constants/awsconfig";
 import { awsauth } from "../constants/awsauth";
 import Navbar from "../components/Navigation/Navbar";
+import '../styles/globals.css'
 
 const { chains, provider } = configureChains(
   [
@@ -54,6 +55,13 @@ function App({ Component, pageProps }) {
         modalSize="compact"
         initialChain={process.env.NEXT_PUBLIC_DEFAULT_CHAIN}
         chains={chains}
+
+        theme={darkTheme({
+          accentColor: '#fff',
+          accentColorForeground: '#000',
+          borderRadius: 'large',
+          fontStack: "rounded",
+        })}
       >
         <Component {...pageProps} />
       </RainbowKitProvider>
