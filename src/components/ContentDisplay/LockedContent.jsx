@@ -1,4 +1,10 @@
-import { Unstable_Grid2, Card, CardContent } from "@mui/material";
+import {
+  Unstable_Grid2,
+  Card,
+  CardContent,
+  CardActionArea,
+  CardActions,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent";
 import { useRouter } from "next/router";
@@ -25,6 +31,18 @@ const LockedContent = () => {
           return (
             <Unstable_Grid2 key={id}>
               <div className="content-card min-h-min user-dashboard-card">
+              <Card>
+                <CardActionArea>
+                  <CardActions>
+                    <a
+                      className=""
+                      href={`https://submarine-me.vercel.app/${id}`}
+                      target="_blank"
+                    >
+                      Unlock
+                    </a>
+                  </CardActions>
+                </CardActionArea>
                 <CardContent>
                   <iframe
                     src={`https://submarine-me.vercel.app/${id}`}
