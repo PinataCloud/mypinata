@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import styles from "../../../styles/NftGallery.module.css";
+import { useRouter } from "next/router";
 
 export default function NFTGallery() {
   const [nfts, setNfts] = useState();
+  const router = useRouter();
+  const { domain } = router.query;
 
   const [fetchMethod, setFetchMethod] = useState("connectedWallet");
   const [pageKey, setPageKey] = useState(false);
@@ -44,6 +47,12 @@ export default function NFTGallery() {
   return (
     <div className={styles.nft_gallery_page}>
       <div>
+        <button
+          className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+          onClick={() => router.push(`/${domain}`)}
+        >
+          MyPage
+        </button>
         <div className={styles.inputs_container}>
           <div className={styles.input_button_container}>
             <div className={styles.select_container_alt}>

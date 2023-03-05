@@ -10,6 +10,7 @@ import {
 import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";
 import { useRouter } from "next/router";
+import ContentNav from "../ContentNav";
 
 const PublicContent = () => {
   const [files, setFiles] = useState([]);
@@ -22,7 +23,6 @@ const PublicContent = () => {
   const getContent = async () => {
     let data = await getPublicContent();
     data = data.files;
-    console.log(data);
     let allHashes = data.map((file) => file.ipfs_pin_hash);
     let selectedHashes = await getPublicSelection(domain);
     if (selectedHashes.userContent !== null) {
@@ -61,11 +61,18 @@ const PublicContent = () => {
 
   return (
     <Unstable_Grid2>
+      {/* TODO - Add this to ContentNav */}
       <button
         className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
         onClick={handleAdd}
       >
         Add Files
+      </button>
+      <button
+        className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+        onClick={() => router.push(`/${domain}`)}
+      >
+        MyPage
       </button>
       <Unstable_Grid2
         container
