@@ -1,17 +1,22 @@
-import { Unstable_Grid2, Card, CardContent } from "@mui/material";
+import { Unstable_Grid2, Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent";
+import { useRouter } from "next/router";
 
 const UnlockedContent = () => {
+  const router = useRouter();
   const [publicContent, setPublicContent] = useState([]);
   const { getPublicSelection } = useContent();
+  const { domain } = router.query;
 
   useEffect(() => {
-    getPublicContent();
-  }, []);
+    if (domain) {
+      getPublicContent();
+    }
+  }, [domain]);
 
   const getPublicContent = async () => {
-    const data = await getPublicSelection();
+    const data = await getPublicSelection(domain);
     setPublicContent(data.userContent);
   };
   return (
@@ -22,11 +27,7 @@ const UnlockedContent = () => {
             <Unstable_Grid2 key={id}>
               <Card>
                 <CardContent>
-                  <iframe
-                    src={`https://submarine-me.vercel.app/${id}`}
-                    width="400px"
-                    height="400px"
-                  />
+                  <Typography>{id}</Typography>
                 </CardContent>
               </Card>
             </Unstable_Grid2>

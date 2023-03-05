@@ -14,34 +14,36 @@ import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";
 import { useRouter } from "next/router";
 
-const PublicContent = (domain) => {
+const PublicContent = () => {
   const [files, setFiles] = useState([]);
-  // const [hashes, setHashes] = useState()
   const [checkedItems, setCheckedItems] = useState([]);
-  const userDomain = domain.domain;
-  const router = useRouter();
   const { getPublicContent, addPublicSelection, getPublicSelection } =
     useContent();
+  const router = useRouter();
+  const { domain } = router.query;
 
   const getContent = async () => {
     let data = await getPublicContent();
     data = data.files;
-    let ipfshash = data.map((file) => file.ipfs_pin_hash);
-    let selectedHashes = await getPublicSelection();
-    selectedHashes = selectedHashes.userContent;
-    const uniqueValues = ipfshash.filter(
-      (hash) => !selectedHashes.includes(hash)
-    );
-    console.log(selectedHashes, ipfshash);
-
-    setFiles(uniqueValues);
+    console.log(data);
+    let allHashes = data.map((file) => file.ipfs_pin_hash);
+    let selectedHashes = await getPublicSelection(domain);
+    if (selectedHashes.userContent !== null) {
+      selectedHashes = selectedHashes.userContent;
+      const uniqueValues = allHashes.filter(
+        (hash) => !selectedHashes.includes(hash)
+      );
+      setFiles(uniqueValues);
+    } else {
+      setFiles(allHashes);
+    }
   };
 
   useEffect(() => {
-    if (files.length === 0) {
+    if (domain) {
       getContent();
     }
-  }, [files]);
+  }, [domain]);
 
   const handleCheckboxChange = (event, hash) => {
     const checked = event.target.checked;
@@ -56,7 +58,7 @@ const PublicContent = (domain) => {
     let result = await addPublicSelection(checkedItems);
     if (result.success) {
       setCheckedItems([]);
-      router.push(`/${userDomain}`);
+      router.push(`/${domain}`);
     }
   };
 

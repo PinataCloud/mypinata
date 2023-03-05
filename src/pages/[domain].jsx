@@ -12,6 +12,7 @@ import { useContent } from "../hooks/useContent";
 import { useAuth } from "../hooks/useAuth";
 import { useRouter } from "next/router";
 import LockedContent from "../components/ContentDisplay/LockedContent";
+import UnlockedContent from "../components/ContentDisplay/UnlockedContent";
 
 const Domain = () => {
   const { isDomainOwner } = useContent();
@@ -22,7 +23,7 @@ const Domain = () => {
 
   const isOwner = async () => {
     const data = await isDomainOwner(domain);
-    if (data.isOwner) {
+    if (data) {
       setDomainOwner(true);
     }
     return data;
@@ -44,6 +45,7 @@ const Domain = () => {
           </Link>
         )}
         <LockedContent />
+        <UnlockedContent />
       </Unstable_Grid2>
     </MainLayout>
   );

@@ -134,15 +134,11 @@ export const useContent = () => {
     }
   };
 
-  const getSubmarineSelection = async (selectedItems) => {
+  const getSubmarineSelection = async (domain) => {
     try {
-      const url = "/api/selected/submarine";
-      const headers = await getHeaders();
+      const url = `/api/selected/submarine?domain=${domain}`;
       const res = await ky(url, {
         method: "GET",
-        headers: {
-          ...headers,
-        },
       });
       const json = await res.json();
       return json;
@@ -171,15 +167,13 @@ export const useContent = () => {
     }
   };
 
-  const getPublicSelection = async (selectedItems) => {
+  const getPublicSelection = async (domain) => {
+    console.log("useContent", domain);
+
     try {
-      const url = "/api/selected/public";
-      const headers = await getHeaders();
+      const url = `/api/selected/public?domain=${domain}`;
       const res = await ky(url, {
         method: "GET",
-        headers: {
-          ...headers,
-        },
       });
       const json = await res.json();
       return json;

@@ -2,11 +2,11 @@ import { getSupabaseClient } from "./supabaseClient";
 
 const supabase = getSupabaseClient();
 
-export const getSubmarineSelection = async (pinataId) => {
+export const getSubmarineSelection = async (domain) => {
   const { data, error } = await supabase
     .from("User")
     .select("submarine")
-    .eq("pinata_id", pinataId);
+    .eq("domain", domain);
   if (error) {
     throw error;
   }
@@ -39,11 +39,11 @@ export const addSubmarineSelection = async (pinataId, content) => {
   }
 };
 
-export const getPublicSelection = async (pinataId) => {
+export const getPublicSelection = async (domain) => {
   const { data, error } = await supabase
     .from("User")
     .select("public")
-    .eq("pinata_id", pinataId);
+    .eq("domain", domain);
   if (error) {
     console.log(error);
     throw error;

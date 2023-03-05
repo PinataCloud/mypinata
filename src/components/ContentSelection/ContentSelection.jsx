@@ -4,17 +4,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Typography, Unstable_Grid2 } from "@mui/material";
-import Link from "next/link";
+import { Unstable_Grid2 } from "@mui/material";
 import SubmarineContent from "./Submarine/SubmarineContent";
 import NFTGallery from "./NFT/NFTGallery";
 import PubilcContent from "./Public/PublicContent";
-import { useRouter } from "next/router";
 
 const ContentSelection = () => {
   const [mediaType, setMediaType] = useState("sub");
-  const router = useRouter();
-  const domain = router.query.domain;
 
   const handleChange = (e) => {
     setMediaType(e.target.value);
@@ -39,16 +35,12 @@ const ContentSelection = () => {
             </Select>
           </FormControl>
         </Box>
-        <Unstable_Grid2>
-          {/* <Link passHref href={`/${domain}`}>
-            <Typography variant="h6">Add Files</Typography>
-          </Link> */}
-        </Unstable_Grid2>
+        <Unstable_Grid2></Unstable_Grid2>
       </Unstable_Grid2>
       <Unstable_Grid2>
-        {mediaType === "sub" && <SubmarineContent domain={domain} />}
-        {mediaType === "nfts" && <NFTGallery domain={domain} />}
-        {mediaType === "public" && <PubilcContent domain={domain} />}
+        {mediaType === "sub" && <SubmarineContent />}
+        {mediaType === "nfts" && <NFTGallery />}
+        {mediaType === "public" && <PubilcContent />}
       </Unstable_Grid2>
     </Unstable_Grid2>
   );
