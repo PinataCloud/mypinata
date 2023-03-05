@@ -52,6 +52,7 @@ export const logUserIn = async (email, password) => {
     localStorage.removeItem("pinata-avatar");
     const res = await Auth.signIn(email, password);
     const user = await Auth.userSession(res);
+    console.log(res, user);
     return {
       success: true,
       user: res,
@@ -165,31 +166,6 @@ export const changePassword = async (oldPassword, newPassword) => {
   }
 };
 
-// export const setupTotp = async () => {
-//   const session = await fetchSession();
-//   return await Auth.setupTOTP(session.user);
-// };
-
-// export const verifytTotp = async (challengeAnswer) => {
-//   try {
-//     const session = await fetchSession();
-//     await Auth.verifyTotpToken(session.user, challengeAnswer);
-//     return await setPreferredMFA();
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
-// export const updateAttributes = async (attributes) => {
-//   try {
-//     const session = await fetchSession();
-//     const user = session.user;
-//     await Auth.updateUserAttributes(user, attributes);
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 export const getAuthenticatedUser = async () => {
   return await Auth.currentAuthenticatedUser();
 };
@@ -253,12 +229,9 @@ export const useAuth = () => {
     logUserOut,
     fetchSession,
     changePassword,
-    // setupTotp,
-    // verifytTotp,
     accessToken,
     idToken,
     refreshToken,
-    // updateAttributes,
     getAuthenticatedUser,
     clearCognitoCache,
   };

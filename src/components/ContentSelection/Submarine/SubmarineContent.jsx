@@ -12,7 +12,7 @@ import {
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-const SubmarineContent = (domain) => {
+const SubmarineContent = () => {
   const {
     getSubmarinedShortIds,
     addSubmarineSelection,
@@ -20,22 +20,24 @@ const SubmarineContent = (domain) => {
   } = useContent();
   const [submarinedIDs, setSubmarineIDs] = useState();
   const [checkedItems, setCheckedItems] = useState([]);
-  const userDomain = domain.domain;
   const router = useRouter();
+  const { domain } = router.query;
 
   useEffect(() => {
-    const getSubData = async () => {
-      let ids = await getSubmarinedShortIds();
-      ids = ids.userContent;
-      let alreadySelected = await getSubmarineSelection();
-      alreadySelected = alreadySelected.userContent;
-      const uniqueValues = ids.filter(
-        (subId) => !alreadySelected.includes(subId)
-      );
-      setSubmarineIDs(uniqueValues);
-    };
-    getSubData();
-  }, [checkedItems]);
+    if (domain) {
+      const getSubData = async () => {
+        let ids = await getSubmarinedShortIds();
+        ids = ids.userContent;
+        let alreadySelected = await getSubmarineSelection(domain);
+        alreadySelected = alreadySelected.userContent;
+        const uniqueValues = ids.filter(
+          (subId) => !alreadySelected.includes(subId)
+        );
+        setSubmarineIDs(uniqueValues);
+      };
+      getSubData();
+    }
+  }, [checkedItems, domain]);
 
   const handleCheckboxChange = (event, shortId) => {
     const checked = event.target.checked;
@@ -52,7 +54,7 @@ const SubmarineContent = (domain) => {
     let result = await addSubmarineSelection(checkedItems);
     if (result.success) {
       setCheckedItems([]);
-      router.push(`/${userDomain}`);
+      router.push(`/${domain}`);
     }
   };
 

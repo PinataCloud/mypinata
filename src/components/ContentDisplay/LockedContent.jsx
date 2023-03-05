@@ -1,16 +1,21 @@
 import { Unstable_Grid2, Card, CardContent } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent";
+import { useRouter } from "next/router";
 const LockedContent = () => {
+  const router = useRouter();
   const [submarineContent, setSubmarineContent] = useState([]);
   const { getSubmarineSelection } = useContent();
+  const { domain } = router.query;
 
   useEffect(() => {
-    getSubmarineContent();
-  }, []);
+    if (domain) {
+      getSubmarineContent();
+    }
+  }, [domain]);
 
   const getSubmarineContent = async () => {
-    const data = await getSubmarineSelection();
+    const data = await getSubmarineSelection(domain);
     setSubmarineContent(data.userContent);
   };
   return (
