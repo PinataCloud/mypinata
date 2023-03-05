@@ -66,6 +66,12 @@ const SubmarineContent = () => {
       >
         Add Files
       </button>
+      <button
+        className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+        onClick={() => router.push(`/${domain}`)}
+      >
+        MyPage
+      </button>
       <Unstable_Grid2
         container
         gap={"2rem"}
