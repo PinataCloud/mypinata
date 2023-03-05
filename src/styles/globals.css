@@ -30,6 +30,10 @@ p {
   font-size: 1.2rem;
 }
 
+.rounded {
+  border-radius: 15px;
+}
+
 /* Navigation */
 .nav {
   border-bottom: solid 1px #ffffff61;
@@ -148,7 +152,8 @@ input {
 }
 
 .content-card-public {
-  height: 65px;
+  height: 50px;
+  width: 100%;
   align-items: center;
 }
 
@@ -166,11 +171,12 @@ input {
 }
 
 .submarine-content-card {
-  height: 700px;
+  height: 625px;
 }
 
 .user-dashboard-card {
-  height: 625px;
+  height: 300px;
+  align-items: center;
 }
 
 .content-iframe {
