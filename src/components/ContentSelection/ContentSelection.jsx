@@ -40,15 +40,15 @@ const ContentSelection = () => {
           </FormControl>
         </Box>
         <Unstable_Grid2>
-          <Link passHref href={`/${domain}`}>
+          {/* <Link passHref href={`/${domain}`}>
             <Typography variant="h6">Add Files</Typography>
-          </Link>
+          </Link> */}
         </Unstable_Grid2>
       </Unstable_Grid2>
       <Unstable_Grid2>
-        {mediaType === "sub" && <SubmarineContent />}
-        {mediaType === "nfts" && <NFTGallery />}
-        {mediaType === "public" && <PubilcContent />}
+        {mediaType === "sub" && <SubmarineContent domain={domain} />}
+        {mediaType === "nfts" && <NFTGallery domain={domain} />}
+        {mediaType === "public" && <PubilcContent domain={domain} />}
       </Unstable_Grid2>
     </Unstable_Grid2>
   );

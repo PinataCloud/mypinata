@@ -2,30 +2,63 @@ import { useContent } from "../../../hooks/useContent";
 import { useState } from "react";
 import {
   Unstable_Grid2,
-  Box,
   Checkbox,
   Card,
   CardContent,
   CardActionArea,
   CardActions,
+  Button,
 } from "@mui/material";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 
-const SubmarineContent = () => {
-  const { getSubmarinedShortIds } = useContent();
+const SubmarineContent = (domain) => {
+  const {
+    getSubmarinedShortIds,
+    addSubmarineSelection,
+    getSubmarineSelection,
+  } = useContent();
   const [submarinedIDs, setSubmarineIDs] = useState();
-  const [selectedContet, setSelectedContet] = useState([]);
+  const [checkedItems, setCheckedItems] = useState([]);
+  const userDomain = domain.domain;
+  const router = useRouter();
 
   useEffect(() => {
     const getSubData = async () => {
-      const ids = await getSubmarinedShortIds();
-      setSubmarineIDs(ids.userContent);
+      let ids = await getSubmarinedShortIds();
+      ids = ids.userContent;
+      let alreadySelected = await getSubmarineSelection();
+      alreadySelected = alreadySelected.userContent;
+      const uniqueValues = ids.filter(
+        (subId) => !alreadySelected.includes(subId)
+      );
+      setSubmarineIDs(uniqueValues);
     };
     getSubData();
-  }, []);
+  }, [checkedItems]);
+
+  const handleCheckboxChange = (event, shortId) => {
+    const checked = event.target.checked;
+    if (checked) {
+      setCheckedItems((prevState) => [...prevState, shortId]);
+    } else {
+      setCheckedItems((prevState) =>
+        prevState.filter((item) => item !== shortId)
+      );
+    }
+  };
+
+  const handleAdd = async () => {
+    let result = await addSubmarineSelection(checkedItems);
+    if (result.success) {
+      setCheckedItems([]);
+      router.push(`/${userDomain}`);
+    }
+  };
 
   return (
-    <Unstable_Grid2>
+    <Unstable_Grid2 sx={{ textAlign: "right" }}>
+      <Button onClick={handleAdd}>Add Files</Button>
       <Unstable_Grid2 container gap={"2rem"}>
         {submarinedIDs?.length > 0 &&
           submarinedIDs.map((id) => {
@@ -34,12 +67,15 @@ const SubmarineContent = () => {
                 <Card>
                   <CardActionArea>
                     <CardActions>
-                      <Checkbox />
+                      <Checkbox
+                        value={id}
+                        onChange={(e) => handleCheckboxChange(e, id)}
+                      />
                     </CardActions>
                   </CardActionArea>
                   <CardContent>
                     <iframe
-                      src={`https://submarine-me.vercel.app/${id.short_id}`}
+                      src={`https://submarine-me.vercel.app/${id}`}
                       width="100%"
                       height="100%"
                     />

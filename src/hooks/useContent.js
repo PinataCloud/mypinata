@@ -114,6 +114,80 @@ export const useContent = () => {
     }
   };
 
+  const addSubmarineSelection = async (selectedItems) => {
+    const requestBody = JSON.stringify(selectedItems);
+    try {
+      const url = "/api/selected/submarine";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        body: requestBody,
+        method: "POST",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getSubmarineSelection = async (selectedItems) => {
+    try {
+      const url = "/api/selected/submarine";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const addPublicSelection = async (selectedItems) => {
+    const requestBody = JSON.stringify(selectedItems);
+    try {
+      const url = "/api/selected/public";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        body: requestBody,
+        method: "POST",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getPublicSelection = async (selectedItems) => {
+    try {
+      const url = "/api/selected/public";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const getPublicContent = async () => {
     try {
       const url = "/api/content/public";
@@ -130,6 +204,7 @@ export const useContent = () => {
       throw error;
     }
   };
+
   const getHeaders = async () => {
     const sessionData = await fetchSession();
     const { accessToken } = sessionData;
@@ -147,5 +222,9 @@ export const useContent = () => {
     getUserDomain,
     addUserDomain,
     isDomainOwner,
+    addSubmarineSelection,
+    getSubmarineSelection,
+    addPublicSelection,
+    getPublicSelection,
   };
 };

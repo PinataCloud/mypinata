@@ -1,17 +1,24 @@
-import { Typography, Unstable_Grid2, Button, Link } from "@mui/material";
+import {
+  Typography,
+  Unstable_Grid2,
+  Button,
+  Link,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import MainLayout from "../components/Layout/MainLayout";
 import { useContent } from "../hooks/useContent";
 import { useAuth } from "../hooks/useAuth";
 import { useRouter } from "next/router";
+import LockedContent from "../components/ContentDisplay/LockedContent";
 
 const Domain = () => {
   const { isDomainOwner } = useContent();
   const [domainOwner, setDomainOwner] = useState(false);
-
+  const [domain, setDomain] = useState();
   const router = useRouter();
   const { isAuthenticated } = useAuth();
-  const { domain } = router.query;
 
   const isOwner = async () => {
     const data = await isDomainOwner(domain);
@@ -22,10 +29,11 @@ const Domain = () => {
   };
 
   useEffect(() => {
-    if (!domainOwner) {
-      isOwner();
+    if (router.isReady) {
+      setDomain(router.query.domain);
     }
-  }, [domainOwner]);
+    isOwner();
+  }, [router.isReady, domain]);
 
   return (
     <MainLayout>
@@ -35,8 +43,7 @@ const Domain = () => {
             Add Files
           </Link>
         )}
-
-        <h1>No content yet</h1>
+        <LockedContent />
       </Unstable_Grid2>
     </MainLayout>
   );
