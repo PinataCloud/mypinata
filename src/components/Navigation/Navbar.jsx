@@ -16,6 +16,7 @@ export default function Navbar() {
       <div className="flex">
         <img className="h-9 mr-2" src="/cloud.png"/>
         <h4 className="ff">MyPinataCloud</h4>
+
       </div>
 
       <div className="flex">
