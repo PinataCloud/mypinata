@@ -98,7 +98,7 @@ input {
 .add-item-btn-type {
   height: 35px;
   width: 35px;
-  background-image: url('/public/cloud-btn.png');
+  background-image: url("/public/cloud-btn.png");
 }
 
 .line {
@@ -131,16 +131,15 @@ input {
 }
 
 .content-select button {
-    font-size: 1.75em;
-    font-family: "SFPro-Bold", system-ui, sans-serif;
-    opacity: 0.85;
-    height: 55px;
+  font-size: 1.75em;
+  font-family: "SFPro-Bold", system-ui, sans-serif;
+  opacity: 0.85;
+  height: 55px;
 }
 
 .content-select button:hover {
   border-bottom: solid 5px #fff;
 }
-
 
 /* Content Cards */
 
@@ -177,6 +176,8 @@ input {
 .user-dashboard-card {
   height: 300px;
   align-items: center;
+  padding: 10px;
+  position: "relative";
 }
 
 .content-iframe {

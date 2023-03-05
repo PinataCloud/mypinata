@@ -27,14 +27,19 @@ const UnlockedContent = () => {
           return (
             <Unstable_Grid2 key={id}>
               <div className="content-card user-dashboard-card">
-                <CardContent>
+                <div
+                  style={{
+                    position: "relative",
+                    padding: "1rem",
+                    height: "100%",
+                  }}
+                >
                   <Image
                     src={`https://gateway.pinata.cloud/ipfs/${id}`}
-                    width={500}
-                    height={500}
+                    fill
                     className="rounded"
                   ></Image>
-                </CardContent>
+                </div>
               </div>
             </Unstable_Grid2>
           );
