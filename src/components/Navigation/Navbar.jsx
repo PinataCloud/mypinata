@@ -2,6 +2,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
 import Search from "./Search";
+import Link from "next/link";
 
 export default function Navbar() {
   const { isAuthenticated, logUserOut } = useAuth();
@@ -14,9 +15,12 @@ export default function Navbar() {
   return (
     <div className="flex justify-between h-16 pb-6 mb-6 px-8 pt-4">
       <div className="flex">
-        <img className="h-9 mr-2" src="/cloud.png"/>
-        <h4 className="ff">MyPinataCloud</h4>
-
+        <img className="h-9 mr-2" src="/cloud.png" />
+        <Link passHref href={"/"}>
+          <h4 href="/" className="ff">
+            MyPinataCloud
+          </h4>
+        </Link>
       </div>
 
       <div className="flex">
