@@ -1,10 +1,6 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { Unstable_Grid2 } from "@mui/material";
+import Link from "next/link";
+
 import SubmarineContent from "./Submarine/SubmarineContent";
 import NFTGallery from "./NFT/NFTGallery";
 import PubilcContent from "./Public/PublicContent";
@@ -17,33 +13,42 @@ const ContentSelection = () => {
   };
 
   return (
-    <Unstable_Grid2 sx={{ padding: "2rem" }}>
-      <Unstable_Grid2 container sx={{ justifyContent: "space-between" }}>
-        <Box sx={{ width: "15rem" }}>
-          <FormControl fullWidth>
-            <InputLabel id="mediaType">Media Type</InputLabel>
-            <Select
-              labelId="mediaType"
-              id="demo-simple-select"
-              value={mediaType}
-              label="Submarined Files"
-              onChange={handleChange}
-            >
-              <MenuItem value={"sub"}>Unlockable Content</MenuItem>
-              <MenuItem value={"public"}>Public Content</MenuItem>
-              <MenuItem value={"nfts"}>NFTS</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Unstable_Grid2></Unstable_Grid2>
-      </Unstable_Grid2>
-      <Unstable_Grid2>
-        {mediaType === "sub" && <SubmarineContent />}
-        {mediaType === "nfts" && <NFTGallery />}
-        {mediaType === "public" && <PubilcContent />}
-      </Unstable_Grid2>
-    </Unstable_Grid2>
+    <div className="p-3 w-full">
+      {/* Tabs */}
+      <div className="flex px-6 content-select">
+        <a className="mr-6">All</a>
+        <a className="mr-6" href="">Public</a>
+        <a className="mr-6" href="">Private</a>
+        <a className="mr-6"href="">NFTs</a>
+        <a href="">Merch</a>
+      </div>
+    </div>
   );
 };
 
 export default ContentSelection;
+
+{/* <div className="flex justify-between pb-7 px-8 pt-4">
+      <div className="flex">
+        <img className="h-9 mr-2" src="/cloud.png"/>
+        {!isAuthenticated && <h4 className="ff">MyPinataCloud</h4>}
+      </div>
+
+      <div className="flex">
+        {isAuthenticated && <ConnectButton accountStatus="address"
+                  chainStatus="icon"
+                  showBalance={false} ></ConnectButton>}
+        {isAuthenticated ? <button
+              className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              onClick={logUserOut}>
+              Logout
+            </button> :
+            <button className="rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer" onClick={handleLogin}>Log In</button>} 
+        {!isAuthenticated && <button
+            className="rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer"
+          >
+            Sign Up
+          </button>
+        }
+      </div>
+    </div> */}

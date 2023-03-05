@@ -24,7 +24,7 @@ export default function DomainForm() {
     <div>
       <div>
         <div>
-          <h2>Create a User Domain</h2>
+          <h2 className="ff mb-6">Create a User Domain</h2>
         </div>
         <form onSubmit={handleDomainSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
@@ -37,10 +37,16 @@ export default function DomainForm() {
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
               placeholder="pinnie"
+              className="rounded-lg py-2 mb-8 border-solid border border-white"
             />
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              className="rounded-3xl text-center border py-2 border-solid border-white btn btn-dark hvr-grow cursor-pointer"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
