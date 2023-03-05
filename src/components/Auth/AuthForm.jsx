@@ -62,7 +62,7 @@ const AuthForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
-                  className="rounded-lg py-2 mb-8 border-solid border border-white"
+                  className="rounded-lg py-2 mb-4 border-solid border border-white"
                 />
               </div>
               <div>
