@@ -83,8 +83,14 @@ input {
 
 .add-item-link {
   position: absolute;
-  bottom: -5%;
-  right: 3%;
+  bottom: 0%;
+  right: 0%;
+}
+
+.line {
+  width: 100vw;
+  height: 1px;
+  background-color: #ffffff61;
 }
 
 /* Hover effects */
