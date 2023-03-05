@@ -5,9 +5,9 @@
 
 body {
   font-family: "SF Pro Display", system-ui, sans-serif;
-  /* background-color: black; */
-  background-color: #ccc;
+  background-color: #000;
   color: white;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -18,10 +18,13 @@ h4 {
   font-size: 1.5em;
 }
 
-
-
 .ff {
   font-family: "SFPro-ExpandedBlack", system-ui, sans-serif;
+}
+
+/* Navigation */
+.nav {
+  border-bottom: solid 1px #ffffff61;
 }
 
 /* Unauthenticated Homepage Styles */
@@ -80,6 +83,12 @@ input {
   right: 0%;
 }
 
+.line {
+  width: 100vw;
+  height: 1px;
+  background-color: #ffffff61;
+}
+
 /* Hover effects */
 .hvr-grow {
   display: inline-block;
@@ -96,4 +105,11 @@ input {
 .hvr-grow:focus,
 .hvr-grow:active {
   transform: scale(1.1);
+}
+
+/* Content Selection Styles */
+
+.content-select a {
+    font-size: 1.6em;
+    font-family: "SF Pro Bold", system-ui, sans-serif;
 }
