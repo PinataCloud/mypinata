@@ -2,6 +2,7 @@ import { Unstable_Grid2, Card, CardContent } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useContent } from "../../hooks/useContent";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const UnlockedContent = () => {
   const router = useRouter();
@@ -27,11 +28,11 @@ const UnlockedContent = () => {
             <Unstable_Grid2 key={id}>
               <Card>
                 <CardContent>
-                  <iframe
+                  <Image
                     src={`https://gateway.pinata.cloud/ipfs/${id}`}
-                    height="400px"
-                    width="400px"
-                  ></iframe>
+                    width={500}
+                    height={500}
+                  ></Image>
                 </CardContent>
               </Card>
             </Unstable_Grid2>

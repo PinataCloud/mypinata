@@ -1,6 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAuth } from "../../hooks/useAuth";
 import { useRouter } from "next/router";
+import Search from "./Search";
 
 export default function Navbar() {
   const { isAuthenticated, logUserOut } = useAuth();
@@ -25,26 +26,31 @@ export default function Navbar() {
             showBalance={false}
           ></ConnectButton>
         )}
-        {isAuthenticated ? (
-          <button
-            className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
-            onClick={logUserOut}
-          >
-            Logout
-          </button>
-        ) : (
-          <button
-            className="rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
-            onClick={handleLogin}
-          >
-            Log In
-          </button>
-        )}
-        {!isAuthenticated && (
-          <button className="rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer">
-            <a href="https://www.pinata.cloud/">Sign Up</a>
-          </button>
-        )}
+        <div className="flex">
+          {isAuthenticated ? (
+            <button
+              className="h-12 rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              onClick={logUserOut}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="h-12 rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              onClick={handleLogin}
+            >
+              Log In
+            </button>
+          )}
+          {!isAuthenticated && (
+            <button className=" h-12 rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer mr-4">
+              <a href="https://www.pinata.cloud/">Sign Up</a>
+            </button>
+          )}
+          <div>
+            <Search />
+          </div>
+        </div>
       </div>
     </div>
   );

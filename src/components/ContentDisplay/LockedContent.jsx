@@ -29,7 +29,7 @@ const LockedContent = () => {
                   <iframe
                     src={`https://submarine-me.vercel.app/${id}`}
                     width="400px"
-                    height="400px"
+                    height="600px"
                   />
                 </CardContent>
               </Card>

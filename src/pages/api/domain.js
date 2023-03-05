@@ -6,7 +6,6 @@ import {
 
 export default async function handler(req, res) {
   const user = await getPinataUserSession(req);
-  console.log("Domain.js", user);
   if (!user) {
     res.status(401).send("Unauthorized");
   }
