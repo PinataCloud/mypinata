@@ -58,14 +58,15 @@ const SubmarineContent = () => {
     }
   };
 
+  
+
   return (
     <Unstable_Grid2>
-      <button
-        className="rounded-3xl text-center ml-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+      <div
+        className="add-item-btn-type hvr-grow cursor-pointer"
         onClick={handleAdd}
       >
-        Add Files
-      </button>
+      </div>
       <Unstable_Grid2
         container
         gap={"2rem"}

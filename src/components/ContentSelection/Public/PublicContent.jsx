@@ -79,19 +79,20 @@ const PublicContent = () => {
           files.map((file) => {
             return (
               <Unstable_Grid2>
-                <Card>
+                <div className="content-card">
                   <CardActionArea>
                     <CardActions>
-                      <Checkbox
+                      <Checkbox 
                         value={file}
                         onChange={(e) => handleCheckboxChange(e, file)}
+                        className="checkbox"
                       />
                     </CardActions>
                   </CardActionArea>
                   <CardContent>
                     <Typography>{file}</Typography>
                   </CardContent>
-                </Card>
+                </div>
               </Unstable_Grid2>
             );
           })}

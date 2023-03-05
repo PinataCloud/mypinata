@@ -87,6 +87,12 @@ input {
   right: 0%;
 }
 
+.add-item-btn-type {
+  height: 35px;
+  width: 35px;
+  background-image: url('/public/cloud-btn.png');
+}
+
 .line {
   width: 100vw;
   height: 1px;
@@ -114,15 +120,33 @@ input {
 /* Content Selection Styles */
 .content-select {
   border-bottom: solid 1px #ffffff61;
+  text-underline-offset: 0.5em;
+
 }
 
-.content-select a {
+.content-select button {
     font-size: 1.75em;
     font-family: "SFPro-Bold", system-ui, sans-serif;
     opacity: 0.85;
 }
 
-.content-select a:hover {
+.content-select button:hover {
   border-bottom: solid 5px #fff;
 }
 
+
+/* Content Cards */
+.content-card {
+  border: solid 1px #fff;
+  border-radius: 1.5rem;
+  height: 250px;
+  padding: 15px;
+}
+
+.checkbox {
+  border: solid 1px #fff;
+}
+
+.checkbox:hover {
+  background-color: #fff;
+}
