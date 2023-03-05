@@ -25,7 +25,7 @@ const ContentSelection = () => {
       <Unstable_Grid2 container sx={{ justifyContent: "space-between" }}>
         <Box sx={{ width: "15rem" }}>
           <FormControl fullWidth>
-            <InputLabel id="mediaType">Media Type</InputLabel>
+            <InputLabel className="color-white"id="mediaType">Media Type</InputLabel>
             <Select
               labelId="mediaType"
               id="demo-simple-select"

@@ -9,6 +9,11 @@ body {
   color: white;
 }
 
+h2 {
+  font-size: 1.3em;
+  font-weight: 
+}
+
 h4 {
   font-size: 1.5em;
 }
@@ -30,9 +35,25 @@ h4 {
   line-height: 1;
 }
 
+/* Form styles */
+label {
+  display: none;
+}
+
+input {
+  padding: 12px;
+  height: 45px;
+  width: 350px;
+  background-color: transparent;
+}
+
 /* Custom Button Styles */
+.btn {
+  width: 115px;
+}
+
 .btn-dark {
-  width: 100px;
+  color: #fff;
 }
 
 .btn-dark:hover {

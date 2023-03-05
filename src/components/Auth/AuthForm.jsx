@@ -44,13 +44,13 @@ const AuthForm = () => {
       <div>
         <div>
           <div>
-            <h2>Sign in with your Pinata account</h2>
+            <h2 className="ff mb-6">Sign into your MyPinataCloud</h2>
           </div>
           <form onSubmit={handleValidSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div>
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email-address">
                   Email address
                 </label>
                 <input
@@ -61,7 +61,8 @@ const AuthForm = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email address"
+                  placeholder="Email Address"
+                  className="rounded-lg py-2 mb-8 border-solid border border-white"
                 />
               </div>
               <div>
@@ -75,12 +76,16 @@ const AuthForm = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
+                  className="rounded-lg py-2 mb-8 border-solid border border-white"
                 />
               </div>
             </div>
 
             <div>
-              <button type="submit">
+              <button
+              className="rounded-3xl text-center border py-2 border-solid border-white btn btn-dark hvr-grow cursor-pointer"
+              type="submit"
+              >
                 <span></span>
                 {submitting ? "Signing in..." : "Sign in"}
               </button>
