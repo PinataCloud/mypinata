@@ -119,7 +119,6 @@ export const useContent = () => {
     try {
       const url = "/api/selected/submarine";
       const headers = await getHeaders();
-      console.log("addSubmarie,  useContent", Array.isArray(selectedItems));
       const res = await ky(url, {
         body: requestBody,
         method: "POST",
@@ -138,6 +137,43 @@ export const useContent = () => {
   const getSubmarineSelection = async (selectedItems) => {
     try {
       const url = "/api/selected/submarine";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        method: "GET",
+        headers: {
+          ...headers,
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const addPublicSelection = async (selectedItems) => {
+    const requestBody = JSON.stringify(selectedItems);
+    try {
+      const url = "/api/selected/public";
+      const headers = await getHeaders();
+      const res = await ky(url, {
+        body: requestBody,
+        method: "POST",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await res.json();
+      return json;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getPublicSelection = async (selectedItems) => {
+    try {
+      const url = "/api/selected/public";
       const headers = await getHeaders();
       const res = await ky(url, {
         method: "GET",
@@ -188,5 +224,7 @@ export const useContent = () => {
     isDomainOwner,
     addSubmarineSelection,
     getSubmarineSelection,
+    addPublicSelection,
+    getPublicSelection,
   };
 };

@@ -2,13 +2,11 @@ import { useContent } from "../../../hooks/useContent";
 import { useState } from "react";
 import {
   Unstable_Grid2,
-  Box,
   Checkbox,
   Card,
   CardContent,
   CardActionArea,
   CardActions,
-  Typography,
   Button,
 } from "@mui/material";
 import { useEffect } from "react";
@@ -31,7 +29,6 @@ const SubmarineContent = (domain) => {
       ids = ids.userContent;
       let alreadySelected = await getSubmarineSelection();
       alreadySelected = alreadySelected.userContent;
-      console.log("already Selected", alreadySelected, "ids", ids);
       const uniqueValues = ids.filter(
         (subId) => !alreadySelected.includes(subId)
       );
@@ -52,7 +49,6 @@ const SubmarineContent = (domain) => {
   };
 
   const handleAdd = async () => {
-    console.log("Checked Items", typeof checkedItems);
     let result = await addSubmarineSelection(checkedItems);
     if (result.success) {
       setCheckedItems([]);
@@ -60,7 +56,6 @@ const SubmarineContent = (domain) => {
     }
   };
 
-  //TO DO only display if not in the selection already
   return (
     <Unstable_Grid2 sx={{ textAlign: "right" }}>
       <Button onClick={handleAdd}>Add Files</Button>

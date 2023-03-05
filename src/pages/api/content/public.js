@@ -11,12 +11,10 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const jwt = req.headers.authorization;
-      console.log(jwt);
-
       let files = await getPublicFiles(jwt).catch(() => {
         return res.status(400).json({ success: false });
       });
-      return res.status(200).json({ success: true, files: files });
+      return res.status(200).json({ success: true, files: files.rows });
     } catch (error) {
       throw error;
     }

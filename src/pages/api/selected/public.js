@@ -1,7 +1,7 @@
 import { getPinataUserSession } from "../../../modules/pinataAPI.js";
 import {
-  addSubmarineSelection,
-  getSubmarineSelection,
+  addPublicSelection,
+  getPublicSelection,
 } from "../../../repositories/mypinata/content.js";
 
 export default async function handler(req, res) {
@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   const pinataID = user.userInformation.id;
   if (req.method === "GET") {
     try {
-      const submarinedSelection = await getSubmarineSelection(pinataID);
-      return res.status(200).json({ userContent: submarinedSelection });
+      const publicSelection = await getPublicSelection(pinataID);
+      return res.status(200).json({ userContent: publicSelection });
     } catch (error) {
       throw error;
     }
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      const data = await addSubmarineSelection(pinataID, req.body);
+      const data = await addPublicSelection(pinataID, req.body);
       return res.status(200).json({ success: true, data: data });
     } catch (error) {
       throw error;

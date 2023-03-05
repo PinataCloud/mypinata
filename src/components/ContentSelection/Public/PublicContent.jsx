@@ -8,17 +8,33 @@ import {
   Typography,
   CardActionArea,
   CardActions,
+  Button,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useContent } from "../../../hooks/useContent";
+import { useRouter } from "next/router";
 
-const PubilcContent = (domain) => {
+const PublicContent = (domain) => {
   const [files, setFiles] = useState([]);
-  const { getPublicContent } = useContent();
+  // const [hashes, setHashes] = useState()
+  const [checkedItems, setCheckedItems] = useState([]);
+  const userDomain = domain.domain;
+  const router = useRouter();
+  const { getPublicContent, addPublicSelection, getPublicSelection } =
+    useContent();
+
   const getContent = async () => {
     let data = await getPublicContent();
-    setFiles(data.files.rows);
-    console.log(data.files.rows);
+    data = data.files;
+    let ipfshash = data.map((file) => file.ipfs_pin_hash);
+    let selectedHashes = await getPublicSelection();
+    selectedHashes = selectedHashes.userContent;
+    const uniqueValues = ipfshash.filter(
+      (hash) => !selectedHashes.includes(hash)
+    );
+    console.log(selectedHashes, ipfshash);
+
+    setFiles(uniqueValues);
   };
 
   useEffect(() => {
@@ -27,8 +43,26 @@ const PubilcContent = (domain) => {
     }
   }, [files]);
 
+  const handleCheckboxChange = (event, hash) => {
+    const checked = event.target.checked;
+    if (checked) {
+      setCheckedItems((prevState) => [...prevState, hash]);
+    } else {
+      setCheckedItems((prevState) => prevState.filter((item) => item !== hash));
+    }
+  };
+
+  const handleAdd = async () => {
+    let result = await addPublicSelection(checkedItems);
+    if (result.success) {
+      setCheckedItems([]);
+      router.push(`/${userDomain}`);
+    }
+  };
+
   return (
     <Unstable_Grid2>
+      <Button onClick={handleAdd}>Add Files</Button>
       <Unstable_Grid2 container rowGap={"1rem"}>
         {files?.length > 0 &&
           files.map((file) => {
@@ -37,12 +71,14 @@ const PubilcContent = (domain) => {
                 <Card>
                   <CardActionArea>
                     <CardActions>
-                      <Checkbox />
+                      <Checkbox
+                        value={file}
+                        onChange={(e) => handleCheckboxChange(e, file)}
+                      />
                     </CardActions>
                   </CardActionArea>
                   <CardContent>
-                    <Typography>{file.metadata.name}</Typography>
-                    <Typography>{file.ipfs_pin_hash}</Typography>
+                    <Typography>{file}</Typography>
                   </CardContent>
                 </Card>
               </Unstable_Grid2>
@@ -53,4 +89,4 @@ const PubilcContent = (domain) => {
   );
 };
 
-export default PubilcContent;
+export default PublicContent;
