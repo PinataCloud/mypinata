@@ -43,28 +43,40 @@ const Domain = () => {
           </Link>
         )}
         <div className="p-3 w-full">
-          <div className="flex px-6 content-select mb-3">
-            <button
-              onClick={() => setMediaType("all")}
-              className="mr-6 text-2xl"
-            >
-              All
-            </button>
-            <button
-              onClick={() => setMediaType("locked")}
-              className="mr-6 text-2xl"
-              href=""
-            >
-              Locked
-            </button>
-            <button
-              onClick={() => setMediaType("unlocked")}
-              className="mr-6 text-2xl"
-              href=""
-            >
-              Unlocked
-            </button>
+          <div className="flex justify-between px-6 content-select mb-3">
+            <div>
+              <button
+                onClick={() => setMediaType("all")}
+                className="mr-6 text-2xl"
+              >
+                All
+              </button>
+              <button
+                onClick={() => setMediaType("locked")}
+                className="mr-6 text-2xl"
+                href=""
+              >
+                Locked
+              </button>
+              <button
+                onClick={() => setMediaType("unlocked")}
+                className="mr-6 text-2xl"
+                href=""
+              >
+                Unlocked
+              </button>
+            </div>
+
+            <div>
+              <a
+                href={`https://lenster.xyz/?text=Check%20out%20${domain}%20on%20MyPinataCloud!&url=https://mypinata.vercel.app/${domain}&via=MyPinataCloud&hashtags=lens,myPinata`}
+                target="_blank"
+              >
+                <button className="rounded-full btn">🌿</button>
+              </a>
+            </div>
           </div>
+
           <div className="p-3">
             {mediaType === "all" && (
               <>

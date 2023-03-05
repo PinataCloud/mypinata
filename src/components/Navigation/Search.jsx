@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useContent } from "../../hooks/useContent";
 
 const Search = () => {
   const router = useRouter();
