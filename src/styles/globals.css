@@ -15,7 +15,7 @@ h2 {
 }
 
 h4 {
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 
 .ff {
@@ -24,6 +24,10 @@ h4 {
 
 a:hover {
   opacity: 1;
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 /* Navigation */
@@ -82,9 +86,9 @@ input {
 }
 
 .add-item-link {
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
+  position: fixed;
+  bottom: 6%;
+  right: 3%;
 }
 
 .add-item-btn-type {
@@ -135,11 +139,17 @@ input {
 
 
 /* Content Cards */
+
 .content-card {
   border: solid 1px #fff;
   border-radius: 1.5rem;
   height: 250px;
   padding: 15px;
+}
+
+.content-card-public {
+  height: 65px;
+  align-items: center;
 }
 
 .checkbox {
@@ -150,8 +160,17 @@ input {
   background-color: #fff;
 }
 
+.checkbox-public {
+  height: 25px;
+  width: 25px;
+}
+
 .submarine-content-card {
   height: 700px;
+}
+
+.user-dashboard-card {
+  height: 625px;
 }
 
 .content-iframe {

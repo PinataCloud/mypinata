@@ -24,15 +24,14 @@ const LockedContent = () => {
         submarineContent.map((id) => {
           return (
             <Unstable_Grid2 key={id}>
-              <Card>
+              <div className="content-card min-h-min user-dashboard-card">
                 <CardContent>
                   <iframe
                     src={`https://submarine-me.vercel.app/${id}`}
-                    width="400px"
-                    height="600px"
+                    className="content-iframe"
                   />
                 </CardContent>
-              </Card>
+              </div>
             </Unstable_Grid2>
           );
         })}

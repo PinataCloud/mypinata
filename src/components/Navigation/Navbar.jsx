@@ -37,14 +37,14 @@ export default function Navbar() {
             </button>
           ) : (
             <button
-              className=" rounded-3xl mr-4 text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
+              className="h-10 rounded-3xl text-center mr-4 btn border py-2 border-solid border-white btn-dark hvr-grow cursor-pointer"
               onClick={handleLogin}
             >
               Log In
             </button>
           )}
           {!isAuthenticated && (
-            <button className=" h-12 rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer mr-4">
+            <button className="h-10 rounded-3xl text-center btn border py-2 border-solid border-white btn-light hvr-grow cursor-pointer mr-4">
               <a href="https://www.pinata.cloud/">Sign Up</a>
             </button>
           )}

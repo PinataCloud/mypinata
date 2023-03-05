@@ -26,15 +26,16 @@ const UnlockedContent = () => {
         publicContent.map((id) => {
           return (
             <Unstable_Grid2 key={id}>
-              <Card>
+              <div className="content-card min-h-min user-dashboard-card">
                 <CardContent>
                   <Image
                     src={`https://gateway.pinata.cloud/ipfs/${id}`}
-                    width={500}
-                    height={500}
+                    className="content-iframe"
+                    width="auto"
+                    height="550px"
                   ></Image>
                 </CardContent>
-              </Card>
+              </div>
             </Unstable_Grid2>
           );
         })}
