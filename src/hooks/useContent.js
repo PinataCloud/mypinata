@@ -21,6 +21,11 @@ export const useContent = () => {
     }
   };
 
+  const getGatewayUrl = async () => {
+    let user = await getUserPinataSession();
+    console.log(user);
+  };
+
   const getSubmarinedShortIds = async () => {
     try {
       const url = "/api/content/submarine";
@@ -197,5 +202,6 @@ export const useContent = () => {
     getSubmarineSelection,
     addPublicSelection,
     getPublicSelection,
+    getGatewayUrl,
   };
 };

@@ -29,8 +29,6 @@ const AuthForm = () => {
       setAuthError(result.error.message);
     } else {
       const data = await checkHasDomain();
-      console.log(data);
-
       if (data.hasDomain) {
         router.push(`/${data.userDomain.domain}`);
       } else {
