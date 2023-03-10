@@ -5,7 +5,7 @@ import {
   Checkbox,
   CardContent,
   CardActionArea,
-  CardActions
+  CardActions,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -28,10 +28,14 @@ const SubmarineContent = () => {
         ids = ids.userContent;
         let alreadySelected = await getSubmarineSelection(domain);
         alreadySelected = alreadySelected.userContent;
-        const uniqueValues = ids.filter(
-          (subId) => !alreadySelected.includes(subId)
-        );
-        setSubmarineIDs(uniqueValues);
+        if (alreadySelected > 0) {
+          const uniqueValues = ids.filter(
+            (subId) => !alreadySelected.includes(subId)
+          );
+          setSubmarineIDs(uniqueValues);
+        } else {
+          setSubmarineIDs(ids);
+        }
       };
       getSubData();
     }
@@ -55,8 +59,6 @@ const SubmarineContent = () => {
       router.push(`/${domain}`);
     }
   };
-
-  
 
   return (
     <Unstable_Grid2>
